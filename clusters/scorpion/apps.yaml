@@ -5,6 +5,10 @@ metadata:
   name: scorpion-apps
   namespace: flux-system
 spec:
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-gpg
   interval: 10m0s
   retryInterval: 1m
   timeout: 5m

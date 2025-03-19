@@ -1,0 +1,17 @@
+ingressRoute:
+  dashboard:
+    enabled: true
+    entryPoints:
+      - websecure
+    matchRule: Host(`traefik.scorpion.kakatkarakshay.dev`)
+    tls:
+      certResolver: prod
+
+tlsStore:
+  default:
+    defaultGeneratedCert:
+      resolver: prod
+      domain:
+        main: "*.scorpion.kakatkarakshay.dev"
+        sans:
+          - scorpion.kakatkarakshay.dev
