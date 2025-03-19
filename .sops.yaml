@@ -1,0 +1,6 @@
+creation_rules:
+  - path_regex: .*values.yaml$
+    pgp: DD45ABA8538CB7C9D92AFCDF5C29560744044DB2
+  - path_regex: .*.yaml
+    encrypted_regex: ^(data|stringData)$
+    pgp: DD45ABA8538CB7C9D92AFCDF5C29560744044DB2

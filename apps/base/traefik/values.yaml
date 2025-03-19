@@ -1,0 +1,39 @@
+ingressClass:
+  enabled: true
+  isDefaultClass: true
+
+service:
+  annotations:
+    oci.oraclecloud.com/load-balancer-type: "nlb"
+
+ports:
+  web:
+    hostPort: 80
+    redirections:
+      entryPoint:
+        to: websecure
+        scheme: https
+        permanent: true
+  websecure:
+    hostPort: 443
+    tls:
+      enabled: true
+
+certificatesResolvers:
+  prod:
+    acme:
+      email: "me@kakatkarakshay.dev"
+      storage: "/data/acme.json"
+      dnsChallenge:
+        provider: "cloudflare"
+        resolvers:
+          - "1.1.1.1:53"
+          - "1.0.0.1:53"
+
+tlsOptions:
+  default:
+    minVersion: "VersionTLS12"
+
+persistence:
+  enabled: true
+  accessMode: ReadWriteMany
